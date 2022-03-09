@@ -1,5 +1,18 @@
 # Colleagues
 
+## Description
+
+Simple design. Clean code.
+
+## Included functional requirements
+
+- Responsive design, works on mobile and tablets
+- Use modern CSS throughout the application (css-grid, variables, clamp etc)
+- Sort by name and office
+- Filter by name and office
+- Use Typescript (or similar, no any’s!)
+- Integration tests of components
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
 
 ## Development server
