@@ -11,7 +11,8 @@ Simple design. Clean code.
 - Sort by name and office
 - Filter by name and office
 - Use Typescript (or similar, no any’s!)
-- Integration tests of components
+- End-to-end testing (with an existing framework)
+- Unit tests for existing functionality (reasonable coverage)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.3.
 
