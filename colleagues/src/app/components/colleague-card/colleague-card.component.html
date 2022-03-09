@@ -1,1 +1,18 @@
-{{ colleague.name }}
+<div class="card colleague-card">
+  <div class="image">
+	  <img *ngIf="colleague.imagePortraitUrl" [src]="colleague.imagePortraitUrl">
+	  <img *ngIf="!colleague.imagePortraitUrl" src="/assets/no-image.png">
+	
+	</div>
+  <div class="info">
+    <div class="titles">
+      <div class="name">{{ colleague.name }}</div>
+      <div class="office">Office: {{ colleague.office }}</div>
+    </div>
+	<div class="social-media">
+		<a *ngIf="colleague.linkedIn" [href]="'https://www.linkedin.com/' + colleague.linkedIn" target="_blank"><img src="/assets/icons/linkedin_icon.png"></a>
+		<a *ngIf="colleague.gitHub" [href]="'https://github.com/' + colleague.gitHub" target="_blank"><img src="/assets/icons/github_icon.png"></a>
+		<a *ngIf="colleague.twitter" [href]="'https://twitter.com/' + colleague.twitter" target="_blank"><img src="/assets/icons/twitter_icon.png"></a>
+	</div>
+  </div>
+</div>

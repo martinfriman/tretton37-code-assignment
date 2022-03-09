@@ -1,0 +1,33 @@
+.colleague-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sort-header {
+  flex-basis: 100%;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 24px;
+}
+
+.colleague-card {
+  width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .colleague-card {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 960px) {
+  .colleague-card {
+    width: 33.333%;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .colleague-card {
+    width: 25%;
+  }
+}

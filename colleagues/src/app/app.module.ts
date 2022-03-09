@@ -6,17 +6,19 @@ import { AppComponent } from './app.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { ColleagueListComponent } from './components/colleague-list/colleague-list.component';
 import { ColleagueCardComponent } from './components/colleague-card/colleague-card.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     FilterComponent,
     ColleagueListComponent,
-    ColleagueCardComponent
+    ColleagueCardComponent,
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

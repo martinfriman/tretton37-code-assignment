@@ -1,1 +1,8 @@
-<app-colleague-card *ngFor="let colleague of colleaguesService.colleagueList" [colleague]="colleague"></app-colleague-card>
+<div class="colleague-list">
+  <ng-container *ngFor="let colleague of colleaguesService.colleagueList; let i = index">
+	  <div class="sort-header" *ngIf="colleaguesService.selectedSortOrder === eSortOrder.Office && isNewOffice(i)"> {{ colleague.office }}</div>
+	  <div class="sort-header"  *ngIf="colleaguesService.selectedSortOrder === eSortOrder.Name && isNewFirstChar(i)"> {{ colleague.name.substring(0,1) }}</div>
+    <app-colleague-card class="colleague-card" [colleague]="colleague">
+    </app-colleague-card>
+  </ng-container>
+</div>

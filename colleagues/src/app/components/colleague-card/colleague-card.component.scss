@@ -1,0 +1,29 @@
+.colleague-card {
+	
+	
+}
+.image {
+	
+	img {
+		width: 100%;
+		height: auto;
+	}
+}
+.info {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 12px;
+
+	.name {
+		margin-bottom: 6px;
+		font-weight: 700;
+	}
+}
+.social-media {
+	img {
+		width: 24px;
+	}
+	a {
+		padding: 3px;
+	}
+}
