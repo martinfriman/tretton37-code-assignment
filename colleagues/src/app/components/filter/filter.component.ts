@@ -19,6 +19,11 @@ export class FilterComponent implements OnInit {
     this.colleaguesService.updateSortOrder(order);
   }
 
+  onClearTextSearch() {
+    this.colleaguesService.nameSearchText='';
+    this.colleaguesService.updateColleagueListByFilter();
+  }
+
   onOfficeCheckboxChange(office: any, event: Event): void {
     this.colleaguesService.selectedOffices = this.getSelectedOffices(office,  (event.target as HTMLInputElement).checked);
     this.colleaguesService.updateColleagueListByFilter();
