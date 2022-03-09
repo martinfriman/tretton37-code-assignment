@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Colleague } from '../models/colleague.model';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ApiService {
 
   getAllColleuges() {
 
-    return this.http.get<any>(this.apiURL, {headers: this.headers});
+    return this.http.get<Colleague[]>(this.apiURL, {headers: this.headers});
 
   }
 }

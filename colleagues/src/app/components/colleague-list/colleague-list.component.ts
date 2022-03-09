@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from 'src/app/services/api.service';
+import { Colleague } from 'src/app/models/colleague.model';
+import { ColleaguesService } from 'src/app/services/colleagues.service';
 
 @Component({
   selector: 'app-colleague-list',
@@ -8,15 +9,12 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class ColleagueListComponent implements OnInit {
 
-  colleagueList = [];
+  colleagueList: Colleague[] = [];
 
-  constructor(private apiSerrvice: ApiService) { }
+  constructor(public colleaguesService: ColleaguesService) { }
 
   ngOnInit(): void {
-
-    this.apiSerrvice.getAllColleuges().subscribe((result) => {
-      console.log(result);
-    })
+    
   }
 
 }
