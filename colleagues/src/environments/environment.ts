@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiURL : 'https://api.1337co.de/v3/employees',
+  authHeader: 'api-key 14:2022-03-08:sandra.aberg@tretton37.com 414eb7e883e1ccc64070be4522c73cc10a24ff750ecd04d8d369e18770657716'
+
 };
 
 /*
