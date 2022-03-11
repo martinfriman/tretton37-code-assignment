@@ -8,10 +8,9 @@ import { ApiService } from './api.service';
   providedIn: 'root'
 })
 export class ColleaguesService {
-  
   private _colleagueList = new BehaviorSubject<Colleague[]>([]);
   private _offices = new BehaviorSubject<string[]>([]);
-  
+
   private _nameSearchText = new BehaviorSubject<string>('');
   private _selectedOffices = new BehaviorSubject<string[]>([]);
   private _selectedSortOrder = new BehaviorSubject<SortOrder>(SortOrder.Name);
@@ -62,23 +61,24 @@ export class ColleaguesService {
 
   public updateSortOrder(order: SortOrder): void {
     this.selectedSortOrder = order;
-    switch(this.selectedSortOrder) {
-      case SortOrder.Name :
-        this.colleagueList = [...this.colleagueList].sort((a,b) => a.name.localeCompare(b.name));
+    switch (this.selectedSortOrder) {
+      case SortOrder.Name:
+        this.colleagueList = [...this.colleagueList].sort((a, b) => a.name.localeCompare(b.name));
         break;
-        case SortOrder.Office :
-        this.colleagueList = [...this.colleagueList].sort((a,b) => a.office.localeCompare(b.office));
+      case SortOrder.Office:
+        this.colleagueList = [...this.colleagueList].sort((a, b) => a.office.localeCompare(b.office));
         break;
     }
-    
   }
 
   public updateColleagueListByFilter() {
-    this.colleagueList = this.nameSearchText ? this._allColleagues.filter(c => this.isNameInSearchText(c.name, this.nameSearchText)) : this._allColleagues;
-    this.colleagueList = this.colleagueList.filter(c => this.selectedOffices.includes(c.office));
+    this.colleagueList = this.nameSearchText
+      ? this._allColleagues.filter((c) => this.isNameInSearchText(c.name, this.nameSearchText))
+      : this._allColleagues;
+    this.colleagueList = this.colleagueList.filter((c) => this.selectedOffices.includes(c.office));
   }
 
-  private onColleaguesLoaded(colleagues: Colleague[]):void {
+  private onColleaguesLoaded(colleagues: Colleague[]): void {
     this._allColleagues = colleagues;
     this.updateOffices(colleagues);
     this.updateColleagueListByFilter();
@@ -90,12 +90,28 @@ export class ColleaguesService {
   }
 
   private isNameInSearchText(name: string, searchText: string) {
-    const allNames = name.toLowerCase().split(' ').map(n => n.toLowerCase());
-    return allNames.find(n => n.substring(0, searchText.length).indexOf(searchText.toLowerCase())>-1) !== undefined;
+    if (searchText.indexOf('*') > -1) {
+      return this.getNameByWildcard(name, searchText);
+    }
+
+    return this.getNameByStartMatch(name, searchText);
+  }
+
+  private getNameByStartMatch(name: string, searchText: string) {
+    const allNames = name
+      .toLowerCase()
+      .split(' ')
+      .map((n) => n.toLowerCase());
+    return allNames.find((n) => n.substring(0, searchText.length).indexOf(searchText.toLowerCase()) > -1) !== undefined;
+  }
+
+  private getNameByWildcard(name: string, searchText: string) {
+    searchText = searchText.replace('*', '[\\w\\s]+');
+    const pattern = new RegExp(searchText, 'gi');
+    return pattern.test(name);
   }
 
   private getOfficesFromColleagueList(colleagueList: Colleague[]) {
-    return [...new Set(colleagueList.map(c => c.office?.replace(/\s+$/, '')))].filter(c => c).sort();
+    return [...new Set(colleagueList.map((c) => c.office?.replace(/\s+$/, '')))].filter((c) => c).sort();
   }
-
 }

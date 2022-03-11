@@ -6,7 +6,7 @@
 	</div>
   <div class="info">
     <div class="titles">
-      <div class="name">{{ colleague.name }}</div>
+      <div class="name">{{ colleague.name | highlightSearchText:colleaugesService.nameSearchText }}</div>
       <div class="office">Office: {{ colleague.office }}</div>
     </div>
 	<div class="social-media">
